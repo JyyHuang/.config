@@ -1,6 +1,4 @@
-# My config files for neovim, wezterm, firefox.
-
-Work in progress...
+# My config files
 
 ## Dependencies
 - zsh
