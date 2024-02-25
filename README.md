@@ -8,5 +8,3 @@
 - [nvim](https://github.com/neovim/neovim)
 - [trash](https://github.com/andreafrancia/trash-cli)
 
-## Reminders
-- Make necessary changes to usernames
