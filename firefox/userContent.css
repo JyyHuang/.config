@@ -1,0 +1,15 @@
+
+@-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing){
+  body {
+    z-index: -1 ;
+    position: fixed ;
+    top: 0 ;
+    left: 0 ;
+    background: no-repeat url(black_stones_b_w.jpg) center ;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode:luminosity;
+    background-size: cover ;
+    width: 100vw ;
+    height: 100vh ;
+  }
+}

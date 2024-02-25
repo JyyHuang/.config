@@ -1,0 +1,24 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#navigator-toolbox { font-family: "FiraMono Nerd Font" !important }
+
+#PlacesToolbarItems { 
+    justify-content: safe center !important;
+}
+
+#urlbar-engine-one-off-item-bookmarks {
+    fill: #ebebec !important;
+}
+
+#star-button[starred] {
+    fill: #ebebec !important;
+}
+
+.tab-background[selected]{ background: #001427 !important;}
+
+.bookmark-item{
+    font-size: 14px !important;
+    padding: 8px !important;
+}
+
+/* Background image new tab page */
