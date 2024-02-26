@@ -21,8 +21,6 @@ config.wsl_domains = {
         distribution = 'Ubuntu',
         username = "joyjosr",
         
-        default_cwd = "/mnt/c/Users/Joey",
-        
     },
 }
 
