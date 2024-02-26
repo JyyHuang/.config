@@ -57,8 +57,8 @@ alias vim="nvim"
 alias vi="nvim"
 
 # movements
-alias winuser="cd $Home/mnt/c/Users/Joey"
-alias projects="cd $Home/mnt/c/Users/Joey/PROJECTS"
+WIN_HOME=$(wslpath -au "$(cmd.exe /c 'echo %UserProfile%')")
+alias winuser="cd $Home/$WIN_HOME"
 
 alias ll="ls -la"
 
