@@ -34,25 +34,25 @@ function module.apply_to_config(config)
         return string.gsub(s, '(.*[/\\])(.*)', '%2')
     end
 
+
     wezterm.on(
         'format-tab-title',
         function(tab,tabs,panes,config, hover, max_width)
             
-            local background = '#45475a'
+            local background = '#1e1e2e'
             local foreground = '#f38ba8'
 
             if tab.is_active then
-                background = '#1e1e2e'
+                background = '#45475a'
             elseif hover then
                 background = '#313244'
                 foreground = '#b4befe'
             end
 
             local pane = tab.active_pane
-            local title = basename(pane.foreground_process_name)
-            -- ensure that the titles fit in the available space,
-            -- and that we have room for the edges.
-            title = wezterm.truncate_right(title, max_width - 2)
+            local cwd = pane.current_working_dir
+            local cwd_string = tostring(cwd)
+            local title = basename(cwd_string)
 
             return {
                 {Background = {Color = background}},
