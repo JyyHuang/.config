@@ -1,7 +1,6 @@
 local wezterm = require 'wezterm'
 
 local module = {}
-
 function module.apply_to_config(config)
     local bg_color = '#11111B'
     -- Color Scheme
@@ -15,7 +14,8 @@ function module.apply_to_config(config)
     config.window_background_opacity = 0.8
     config.window_decorations = "RESIZE"
     config.window_close_confirmation = 'AlwaysPrompt'
-
+    
+    config.tab_max_width = 30
     config.scrollback_lines = 3000
 
     -- Font
@@ -34,38 +34,53 @@ function module.apply_to_config(config)
         return string.gsub(s, '(.*[/\\])(.*)', '%2')
     end
 
+    -- This function returns the suggested title for a tab.
+    -- It prefers the title that was set via `tab:set_title()`
+    -- or `wezterm cli set-tab-title`, but falls back to the
+    -- title of the active pane in that tab.
+    function tab_title(tab_info)
+        local title = tab_info.tab_title
+        -- if the tab title is explicitly set, take that
+        if title and #title > 0 then
+            return title
+        end
+        -- Otherwise, use the title from the active pane
+        -- in that tab
+        local pane = tab_info.active_pane
+        local cwd = pane.current_working_dir
+        local cwd_string = tostring(cwd)          
+        return string.format("zsh: %s", basename(cwd_string))
+    end
 
     wezterm.on(
-        'format-tab-title',
-        function(tab,tabs,panes,config, hover, max_width)
-            
-            local background = '#1e1e2e'
-            local foreground = '#f38ba8'
+    'format-tab-title',
+    function(tab,tabs,panes,config, hover, max_width)
 
-            if tab.is_active then
-                background = '#45475a'
-            elseif hover then
-                background = '#313244'
-                foreground = '#b4befe'
-            end
+        local background = '#1e1e2e'
+        local foreground = '#f38ba8'
 
-            local pane = tab.active_pane
-            local cwd = pane.current_working_dir
-            local cwd_string = tostring(cwd)
-            local title = basename(cwd_string)
+        if tab.is_active then
+            background = '#45475a'
+        elseif hover then
+            background = '#313244'
+            foreground = '#b4befe'
+        end
 
-            return {
-                {Background = {Color = background}},
-                {Foreground = {Color = bg_color}},
-                {Text = SOLID_RIGHT_ARROW .. ' '},
-                {Background = {Color = background}},
-                {Foreground = {Color = foreground}},
-                {Text = title},
-                {Background = {Color = background}},
-                {Foreground = {Color = bg_color}},
-                {Text = ' ' .. SOLID_LEFT_ARROW},
-            }
-        end)
+        local title = tab_title(tab)
+
+
+        return {
+            {Background = {Color = background}},
+            {Foreground = {Color = bg_color}},
+            {Text = SOLID_RIGHT_ARROW .. ' '},
+            {Background = {Color = background}},
+            {Foreground = {Color = foreground}},
+            {Text = title},
+            {Background = {Color = background}},
+            {Foreground = {Color = bg_color}},
+            {Text = ' ' .. SOLID_LEFT_ARROW},
+        }
+    end)
 
     config.window_frame = {
         font = wezterm.font {family = 'MesloLGS NF'},
@@ -78,7 +93,7 @@ function module.apply_to_config(config)
 
 
     wezterm.on("update-status", function(window, pane)
-        
+
         local cwd = pane:get_current_working_dir().file_path
         local time = wezterm.strftime("%a %b %-d %I:%M %p")
 
@@ -97,17 +112,17 @@ function module.apply_to_config(config)
             { Foreground = {Color = '#f2cdcd'}},   
             { Text = ' ' .. wezterm.nerdfonts.fa_calendar .. ' ' .. time .. ' '}
         }))
-    
+
     end)
 
     config.inactive_pane_hsb = {
-      saturation = 0.7,
-      brightness = 0.5
+        saturation = 0.7,
+        brightness = 0.5
     }
 
 
 
-    
-  end 
+
+end 
 
 return module
