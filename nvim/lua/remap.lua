@@ -32,3 +32,4 @@ vim.keymap.set("x", "<Leader>p", "\"_dP")
 vim.keymap.set("i", "kj", "<Esc>")
 
 vim.keymap.set("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
