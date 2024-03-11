@@ -20,7 +20,6 @@ config.wsl_domains = {
 
         distribution = 'Ubuntu',
         username = "joyjosr",
-        
     },
 }
 

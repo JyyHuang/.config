@@ -58,7 +58,7 @@ alias vim="nvim"
 alias vi="nvim"
 
 # movements
-alias winuser="cd `cmd.exe /c echo %systemdrive%%homepath% 2> /dev/null | tr -d '\r' | xargs -0 wslpath`"
+alias win="cd `cmd.exe /c echo %systemdrive%%homepath% 2> /dev/null | tr -d '\r' | xargs -0 wslpath`"
 
 
 alias ll="ls -la"
@@ -76,3 +76,6 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#trash
+alias rm="trash-put"

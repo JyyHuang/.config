@@ -24,4 +24,17 @@ return{
     {
         "neovim/nvim-lspconfig",
     },
+    {
+       "jay-babu/mason-null-ls.nvim",
+       event = {"BufReadPre", "BufNewFile"},
+       config = function ()
+           require("plugin_config.none-ls")
+           require("mason-null-ls").setup({
+               ensure_installed = nil,
+               automatic_installation = true,
+               handlers = nil,
+           })
+       end
+
+    }
 }

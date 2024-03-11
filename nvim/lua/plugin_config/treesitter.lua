@@ -3,7 +3,6 @@ return{
         "nvim-treesitter/nvim-treesitter",
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = {"javascript", "typescript", "c", "lua", "vim", "vimdoc", "query"},
                 auto_install = true,
                 highlight = {
                     enable = true,
@@ -13,7 +12,7 @@ return{
                 incremental_selection = {
                     enable = true,
                     keymaps = {
-                        init_selection = "<Leader>ss", 
+                        init_selection = "<Leader>ss",
                         node_incremental = "<Leader>sd",
                         scope_incremental = "<Leader>sw",
                         node_decremental = "<Leader>sa",
@@ -52,4 +51,7 @@ return{
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
+    {
+        "nvim-treesitter/nvim-treesitter-context"
+    }
 }
