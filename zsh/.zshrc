@@ -79,3 +79,5 @@ export NVM_DIR="$HOME/.nvm"
 
 #trash
 alias rm="trash-put"
+
+export PATH=”$PATH:/home/joyjosr/.local/bin”
