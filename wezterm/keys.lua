@@ -6,9 +6,8 @@ local act = wezterm.action
 
 function module.apply_to_config(config)
 	-- timeout_milliseconds defaults to 1000 and can be omitted
-	config.leader = { key = "LeftAlt", mods = "ALT", timeout_milliseconds = 1000 }
+	config.leader = { key = "LeftAlt", mods = "ALT", timeout_milliseconds=1000}
 	config.keys = {
-
 		{ key = "|", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "w", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
@@ -37,7 +36,7 @@ function module.apply_to_config(config)
 		{ key = "RightArrow", mods = "LEADER", action = act.AdjustPaneSize({ "Right", 5 }) },
 		{ key = "UpArrow", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
 		{ key = "DownArrow", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
-	}
+}
 end
 
 return module

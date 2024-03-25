@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local module = {}
 function module.apply_to_config(config)
-    local bg_color = "#11111B"
+    local bg_color = "#000000"
     -- Color Scheme
     local MEOW = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
     MEOW.background = bg_color
@@ -26,6 +26,12 @@ function module.apply_to_config(config)
     -- Tab Bar
     local SOLID_LEFT_ARROW = ""
     local SOLID_RIGHT_ARROW = utf8.char(0xe0bc)
+
+    config.colors = {
+        tab_bar = {
+            background = bg_color,
+        }
+    }
     -- Equivalent to POSIX basename(3)
     -- Given "/foo/bar" returns "bar"
     -- Given "c:\\foo\\bar" returns "bar"
@@ -76,13 +82,6 @@ function module.apply_to_config(config)
             { Text = " " .. SOLID_LEFT_ARROW },
         }
     end)
-
-    config.window_frame = {
-        font = wezterm.font({ family = "MesloLGS NF" }),
-        font_size = 11.0,
-        active_titlebar_bg = "#11111c",
-        inactive_titlebar_bg = bg_color,
-    }
 
     config.use_fancy_tab_bar = false
 
