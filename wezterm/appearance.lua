@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local module = {}
 function module.apply_to_config(config)
-	local bg_color = "#000000"
+	local bg_color = "#11111B"
 	--Color Scheme
 	local MEOW = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 	MEOW.background = bg_color
@@ -16,7 +16,7 @@ function module.apply_to_config(config)
 	config.background = {
 		{
 			source = {
-				File = wezterm.home_dir .. "/.config/wallpapers/zoro1.jpg",
+ 	  			File = wezterm.home_dir .. "/.config/wallpapers/power1.jpg",
 			},
             attachment = "Fixed",
             repeat_x = "NoRepeat",
@@ -37,13 +37,9 @@ function module.apply_to_config(config)
 
 	config.force_reverse_video_cursor = true
 
-	-- Tab Bar
-	local SOLID_LEFT_ARROW = ""
-	local SOLID_RIGHT_ARROW = utf8.char(0xe0bc)
-
 	config.colors = {
 		tab_bar = {
-			background = bg_color,
+			background = "rgba(0,0,0,0)",
 		},
 	}
 	-- Equivalent to POSIX basename(3)
@@ -86,14 +82,14 @@ function module.apply_to_config(config)
 
 		return {
 			{ Background = { Color = background } },
-			{ Foreground = { Color = bg_color } },
-			{ Text = SOLID_RIGHT_ARROW .. " " },
+			{ Foreground = { Color = bg_color} },
+			{ Text = " " },
 			{ Background = { Color = background } },
 			{ Foreground = { Color = foreground } },
 			{ Text = title },
 			{ Background = { Color = background } },
 			{ Foreground = { Color = bg_color } },
-			{ Text = " " .. SOLID_LEFT_ARROW },
+			{ Text = " " },
 		}
 	end)
 
@@ -104,7 +100,7 @@ function module.apply_to_config(config)
 		local time = wezterm.strftime("%a %b %-d %I:%M %p")
 
 		window:set_right_status(wezterm.format({
-			{ Background = { Color = bg_color } },
+			{ Background = { Color = "rgba(0,0,0,0)" } },
 			{ Foreground = { Color = "#1e1e2e" } },
 			{ Text = "" },
 			{ Background = { Color = "#1e1e2e" } },
