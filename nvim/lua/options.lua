@@ -51,8 +51,6 @@ vim.opt.updatetime = 50;
 
 vim.opt.ignorecase = true;
 
-vim.opt.colorcolumn = "170"
-
 vim.opt.termguicolors = true;
 
 vim.opt.swapfile = false

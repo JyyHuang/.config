@@ -31,7 +31,9 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
 -- Paste preserve
 vim.keymap.set("x", "<Leader>p", '"_dP')
 
+--Replace
 vim.keymap.set("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+vim.keymap.set({"n", "v"}, "<Leader>ar", ":,$s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- Fugitive
 vim.keymap.set("n", "<Leader>gs", vim.cmd.Git)

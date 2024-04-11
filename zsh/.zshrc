@@ -72,12 +72,8 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
 # wezterm shell integration
 . $Home/etc/profile.d/wezterm.sh
 
+export PATH=”$PATH:/home/joyjosr/.local/bin”
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-#trash
-alias rm="trash-put"
-
-export PATH=”$PATH:/home/joyjosr/.local/bin”
