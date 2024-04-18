@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local wallpaper = require("wallpaper")
 
 local module = {}
 
@@ -41,7 +40,12 @@ function module.apply_to_config(config)
         {
             key = "r",
             mods = "LEADER",
-            action = wezterm.action.ReloadConfiguration
+            action = wezterm.action.ReloadConfiguration,
+        },
+        {
+            key = "b",
+            mods = "LEADER",
+            action= wezterm.action.EmitEvent 'toggle-background'
         }
     }
 end

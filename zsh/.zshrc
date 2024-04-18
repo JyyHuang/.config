@@ -63,7 +63,8 @@ alias win="cd `cmd.exe /c echo %systemdrive%%homepath% 2> /dev/null | tr -d '\r'
 
 alias ll="ls -la"
 
-bindkey '\t' end-of-line
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey '^I' autosuggest-accept
 export ZSH_AUTOSUGGEST_STRATEGY=(
     history
     completion
@@ -77,3 +78,5 @@ export PATH=”$PATH:/home/joyjosr/.local/bin”
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+

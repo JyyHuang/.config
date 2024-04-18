@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local wallpaper = require("wallpaper")
 
 local module = {}
 function module.apply_to_config(config)
@@ -13,11 +12,6 @@ function module.apply_to_config(config)
 	config.color_scheme = "Meow"
 
 	--config.window_background_opacity = 0.8
-	local wallpaper_dir = wezterm.home_dir .. "/.config/wallpapers/*"
-	config.background = {
-		wallpaper.get_wallpaper(wallpaper_dir),
-	}
-	config.automatically_reload_config = false
 
 	config.window_decorations = "RESIZE"
 	config.window_close_confirmation = "AlwaysPrompt"
@@ -114,6 +108,16 @@ function module.apply_to_config(config)
 			{ Foreground = { Color = "#f2cdcd" } },
 			{ Text = " " .. wezterm.nerdfonts.fa_calendar .. " " .. time .. " " },
 		}))
+	end)
+
+	wezterm.on("toggle-background", function(window, pane)
+		local overrides = window:get_config_overrides() or {}
+		if not overrides.background then
+			overrides.background = {nil}
+		else
+			overrides.background = nil
+		end
+		window:set_config_overrides(overrides)
 	end)
 
 	config.inactive_pane_hsb = {

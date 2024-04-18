@@ -1,13 +1,35 @@
 -- leader key
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- LSP keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function()
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 		vim.keymap.set("n", "<Leader>fi", vim.lsp.buf.hover, {})
 		vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, {})
 		vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, {})
+	end,
+})
+vim.diagnostic.config({
+    float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+    }
+})
+
+--Highlights on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
 	end,
 })
 
@@ -23,17 +45,17 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
 -- Panel Movement
-vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l", { silent = true })
 
 -- Paste preserve
 vim.keymap.set("x", "<Leader>p", '"_dP')
 
 --Replace
 vim.keymap.set("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-vim.keymap.set({"n", "v"}, "<Leader>ar", ":,$s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+vim.keymap.set({ "n", "v" }, "<Leader>ar", ":,$s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- Fugitive
 vim.keymap.set("n", "<Leader>gs", vim.cmd.Git)
@@ -50,3 +72,6 @@ vim.keymap.set({ "n", "v" }, "<Leader>mp", vim.lsp.buf.format, {})
 
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- highlight search
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

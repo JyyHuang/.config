@@ -1,10 +1,12 @@
 local wezterm = require("wezterm")
 local appearance = require("appearance")
 local keys = require("keys")
+local wallpaper = require("wallpaper")
 local mux = wezterm.mux
 
 local config = {}
 appearance.apply_to_config(config)
+wallpaper.apply_to_config(config)
 keys.apply_to_config(config)
 --config.initial_cols = 120
 --config.initial_rows = 30
