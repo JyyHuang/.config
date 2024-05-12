@@ -8,8 +8,7 @@ local config = {}
 appearance.apply_to_config(config)
 wallpaper.apply_to_config(config)
 keys.apply_to_config(config)
---config.initial_cols = 120
---config.initial_rows = 30
+config.disable_default_key_bindings = true
 wezterm.on("gui-startup", function(cmd)
 	local tab, pane, window = mux.spawn_window(cmd or {})
 	window:gui_window():maximize()

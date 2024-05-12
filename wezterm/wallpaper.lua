@@ -13,7 +13,7 @@ function module.apply_to_config(config)
 
 	local function get_wallpaper(dir)
 		local wallpapers = {}
-		local dimmer = { brightness = 0.1 }
+		local dimmer = { brightness = 0.05 }
 		for _, v in ipairs(wezterm.glob(dir)) do
 			table.insert(wallpapers, v)
 		end
@@ -31,7 +31,6 @@ function module.apply_to_config(config)
 			hsb = dimmer,
 			vertical_align = "Middle",
 			horizontal_align = "Center",
-			opacity = 0.8,
 		}
 	end
 

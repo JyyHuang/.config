@@ -4,24 +4,46 @@ vim.g.maplocalleader = " "
 
 -- LSP keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function()
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-		vim.keymap.set("n", "<Leader>fi", vim.lsp.buf.hover, {})
-		vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, {})
-		vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, {})
+	group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+	callback = function(event)
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+		end
+
+		map("[d", vim.diagnostic.goto_prev, "Prev diagnostic")
+		map("]d", vim.diagnostic.goto_next, "Next diagnostic")
+
+		map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+
+		map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+
+		map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+
+		map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+
+		map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+
+		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+
+		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+
+		map("H", vim.lsp.buf.hover, "Hover Documentation")
+
+		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	end,
 })
+
 vim.diagnostic.config({
-    float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    }
+	float = {
+		focusable = true,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
 })
 
 --Highlights on yank
@@ -33,45 +55,47 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Netrw
-vim.keymap.set("n", "<Leader>ft", vim.cmd.Ex)
-
 -- Undotree
-vim.keymap.set("n", "<Leader>ut", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<Leader>ut", vim.cmd.UndotreeToggle, { desc = "Toggle UndoTree" })
 
 -- Move
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move 1 line down (visual mode)" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move 1 line up (visual mode)" })
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Move next line to end of current line (normal mode)" })
 
-vim.keymap.set("n", "J", "mzJ`z")
 -- Panel Movement
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { silent = true })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { silent = true })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { silent = true })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l", { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { silent = true, desc = "Switch to left panel" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { silent = true, desc = "Switch to bottom panel" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { silent = true, desc = "Switch to top panel" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l", { silent = true, desc = "Switch to right panel" })
 
 -- Paste preserve
-vim.keymap.set("x", "<Leader>p", '"_dP')
+vim.keymap.set("x", "<Leader>p", '"_dP', { desc = "Preserve paste" })
 
 --Replace
-vim.keymap.set("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-vim.keymap.set({ "n", "v" }, "<Leader>ar", ":,$s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+vim.keymap.set("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace all words" })
+vim.keymap.set(
+	{ "n", "v" },
+	"<Leader>ar",
+	":,$s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+	{ desc = "Replace all words after current line" }
+)
 
 -- Fugitive
-vim.keymap.set("n", "<Leader>gs", vim.cmd.Git)
-vim.keymap.set("n", "<Leader>gv", vim.cmd.Gvdiffsplit)
+vim.keymap.set("n", "<Leader>gs", vim.cmd.Git, { desc = "Open Fugitive (git)" })
+vim.keymap.set("n", "<Leader>gv", vim.cmd.Gvdiffsplit, { desc = "Open git changes in a split" })
 vim.keymap.set("n", "<Leader>gl", function()
 	vim.cmd(":Git log")
-end)
+end, { desc = "Open Git log" })
 vim.keymap.set("n", "<Leader>gl%", function()
 	vim.cmd(":Git log %")
-end)
+end, { desc = "Open Git log for file currently open" })
 
 -- None ls
-vim.keymap.set({ "n", "v" }, "<Leader>mp", vim.lsp.buf.format, {})
+vim.keymap.set({ "n", "v" }, "<Leader>mp", vim.lsp.buf.format, { desc = "Format" })
 
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- highlight search
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove highlight" })
