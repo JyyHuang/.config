@@ -1,0 +1,2 @@
+$Env:KOMOREBI_CONFIG_HOME = 'C:\Users\Joey\.config\komorebi'
+$Env:KOMOREBI_AHK_EXE = 'C:\Program Files\AutoHotkey\UX\AutoHotKeyUX.exe'

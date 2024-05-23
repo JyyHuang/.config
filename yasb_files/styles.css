@@ -1,0 +1,170 @@
+* {
+  /* Bar measurement icons: https://github.com/and3rson/graph-bars-font */
+  /* Icon set: https://fontawesome.com/v5.15/how-to-use/on-the-desktop/setup/getting-started */
+  font-family: "Ubuntu Nerd Font";
+  font-size: 15px;
+  color: #c0caf5;
+}
+
+.bar {
+  background: rgba(22, 22, 30, 0.5);
+  border: 1px solid #283457;
+  padding: 0 5px;
+}
+
+.container-right .widget {
+  margin: 2px;
+  border-radius: 8px;
+}
+
+.container-right .widget * {
+  color: #c0caf5;
+}
+
+.komorebi-workspaces {
+  margin-left: 0;
+}
+
+.ws-btn {
+  padding: 5px;
+  background: rgba(26, 27, 38, 0.4);
+  border: 1px solid rgba(169, 177, 214, 0.4);
+  margin: 2px 2px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.ws-btn:hover {
+  color: #f7768e;
+  background: rgba(180, 190, 254, 0.4);
+  font-weight: bold;
+}
+
+.ws-btn.populated {
+  border-color: rgba(158, 206, 106, 0.6);
+  color: #c0caf5;
+}
+
+.ws-btn.active {
+  background: rgba(122, 162, 247, 0.5);
+  color: #c0caf5;
+}
+
+.weather-widget {
+  padding: 2px 6px;
+  font-size: 14px;
+  background: #1e1e2e;
+}
+
+.weather-widget .icon {
+  font-size: 13px;
+}
+.weather-widget:hover {
+  background: rgba(169, 177, 214, 0.7);
+}
+
+.explorer-widget{
+  background: rgba(122, 162, 247, 0.5);
+  padding: 6px;
+  padding-left: 8px;
+}
+.explorer-widget:hover {
+  background: rgba(169, 177, 214, 0.7);
+}
+
+.cpu-widget .label,
+.wifi-widget .label,
+.memory-widget .label,
+.traffic-widget .label,
+.battery-widget .label {
+  padding: 3px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.traffic-widget .label {
+  background: #b3d3d9;
+}
+
+.wifi-widget .label {
+  background: rgba(122, 162, 247, 0.5);
+  font-size: 16px;
+}
+.wifi-widget .label:hover {
+  background: rgba(169, 177, 214, 0.7);
+  font-size: 16px;
+}
+
+.cpu-widget .label {
+  font-family: "Bars";
+  background: #1e1e2e;
+}
+.cpu-widget .label:hover {
+  background:rgba(169, 177, 214, 0.7) 
+}
+
+.battery-widget .label.status-critical {
+  background: #fb4934;
+}
+
+.battery-widget .label.status-low {
+  background: #fe8019;
+}
+
+.battery-widget .label.status-medium {
+  background: #fabd2f;
+}
+
+.battery-widget .label.status-high {
+  background: #b8bb26;
+}
+
+.battery-widget .label.status-full {
+  background: #8ec07c;
+}
+
+.battery-widget .label.status-charging {
+  background: #8ec07c;
+}
+
+.battery-widget,
+.memory-widget {
+  margin: 0;
+}
+
+.memory-widget .label.status-low {
+  background: rgba(158, 206, 106, 0.7);
+}
+
+.memory-widget .label.status-low:hover {
+  background: rgba(169, 177, 214, 0.7);
+}
+
+.memory-widget .label.status-medium {
+  background: #1e1e2e;
+}
+
+.memory-widget .label.status-medium:hover {
+  background: rgba(169, 177, 214, 0.7);
+}
+
+.memory-widget .label.status-high {
+  background: rgba(247, 118, 142, 0.7);
+}
+
+.memory-widget .label.status-high:hover {
+  background: rgba(169, 177, 214, 0.7);
+}
+
+.active-window-widget .label {
+  padding: 0px 7px 0px 7px;
+  color: #c0caf5;
+  background: #1a1b26;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.komorebi-active-layout .label {
+  color: #c0caf5;
+  margin: 0px 2px 2px 8px;
+}

@@ -1,15 +1,58 @@
+* {
+  font-family: "Ubuntu Nerd Font";
+}
 
 @-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing){
-  body {
-    z-index: -1 ;
-    position: fixed ;
-    top: 0 ;
-    left: 0 ;
-    background: no-repeat url(black_stones_b_w.jpg) center ;
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode:luminosity;
-    background-size: cover ;
-    width: 100vw ;
-    height: 100vh ;
+
+/*  Newtab  */
+.search-inner-wrapper {
+  display: none !important;
+}
+
+.icon.icon-settings {
+  display: none !important;
+}
+
+.outer-wrapper .search-wrapper {
+  padding: 0px !important;
+}
+
+.logo-and-wordmark {
+  display: none !important;
+}
+body{
+  background-color: #15161e!important;
+}
+
+}
+
+@-moz-document url-prefix(about:) {
+
+  /*  Removes the scrollbar on some places  */
+  body,
+  html {
+    overflow-y: auto;
+  }
+
+  /*  Devtools  */
+  @-moz-document url-prefix(about:devtools) {
+    #toolbox-container {
+      margin-top: 10px !important;
+    }
+
+    .devtools-tabbar {
+      background: transparent !important;
+    }
+
+    .devtools-tab-line {
+      border-radius: 0 0 5px 5px;
+    }
+
+    .customize-animate-enter-done,
+    .customize-menu,
+    .top-site-outer:hover,
+    button {
+      background-color: transparent !important;
+    }
   }
 }

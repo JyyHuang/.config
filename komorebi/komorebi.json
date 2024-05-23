@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.25/schema.json",
+  "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.yaml",
+  "window_hiding_behaviour": "Cloak",
+  "window_container_behaviour": "Create",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 2,
+  "default_container_padding": 2,
+  "border_width": 2,
+  "border_offset": -1,
+  "active_window_border": true,
+  "active_window_border_colours": {
+    "single": "#a9b1d6",
+    "stack": "#f7768e",
+    "monocle": "#7aa2f7"
+  },
+  "stackbar": {
+    "height": 25,
+    "mode": "OnStack",
+    "tabs": {
+      "width": 200,
+      "focused_text": "#f7768e",
+      "unfocused_text": "#c0caf5",
+      "background": "#1a1b26"
+    }
+  },
+  "manage_rules":[
+    {
+      "kind": "Title",
+      "id":"- Discord",
+      "matching_strategy": "EndsWith"
+    }
+  ],
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "BSP"
+        },
+        {
+          "name": "II",
+          "layout": "BSP"
+        },
+        {
+          "name": "III",
+          "layout": "BSP"
+        },
+        {
+          "name": "IV",
+          "layout": "BSP"
+        },
+        {
+          "name": "V",
+          "layout": "BSP"
+        },
+      ]
+    }
+  ]
+}

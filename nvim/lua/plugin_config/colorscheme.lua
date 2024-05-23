@@ -1,22 +1,22 @@
 return {
-    {
-        "catppuccin/nvim",
+  {
+    "folke/tokyonight.nvim",
 
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            require("catppuccin").setup({
-                flavour = "mocha",
-                transparent_background = true,
-                custom_highlights = function(colors)
-                    return {
-                        Comment = { fg = "#55c3b7" },
-                        LineNr = { fg = "#D69898" },
-                    }
-                end,
-            })
+    name = "tokyonight",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        light_style = "day",
+        transparent = true,
+        terminal_colors = true,
+        hide_inactive_statusline = false,
+        dim_inactive = true,
+        lualine_bold = true,
+      })
 
-            vim.cmd.colorscheme("catppuccin")
-        end,
-    },
+      vim.cmd.colorscheme("tokyonight")
+    end,
+  },
 }

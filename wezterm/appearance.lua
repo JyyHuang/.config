@@ -2,24 +2,21 @@ local wezterm = require("wezterm")
 
 local module = {}
 function module.apply_to_config(config)
-  local bg_color = "#11111B"
-  --Color Scheme
-  local MEOW = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
-  MEOW.background = bg_color
-  config.color_schemes = {
-    ["Meow"] = MEOW,
-  }
-  config.color_scheme = "Meow"
+  -- --Color Scheme
+  -- config.color_scheme = "Catppuccin Mocha"
+  config.color_scheme = "tokyonight_night"
 
   config.window_decorations = "RESIZE"
   config.window_close_confirmation = "AlwaysPrompt"
 
   config.tab_max_width = 50
   config.scrollback_lines = 3000
-  config.front_end ='WebGpu'
+  config.front_end = "OpenGL"
 
+  config.window_background_opacity = 0.5
   -- Font
-  config.font = wezterm.font("MesloLGS NF")
+  config.font = wezterm.font("Hack Nerd Font Mono", {weight = 'DemiBold'})
+  config.font_size = 13
   config.use_fancy_tab_bar = false
 
   config.default_cursor_style = "BlinkingBlock"
@@ -30,32 +27,33 @@ function module.apply_to_config(config)
   config.force_reverse_video_cursor = true
   config.colors = {
     tab_bar = {
-      background = "rgba(0,0,0,0)",
+      background = "rgba(26, 27, 38, 0.5)",
       active_tab = {
-        bg_color = "#1e1e2e",
-        fg_color = "#b4befe",
+        bg_color = "#16161e",
+        fg_color = "#7aa2f7",
         intensity = "Bold",
         underline = "None",
         italic = true,
         strikethrough = false,
       },
       inactive_tab = {
-        bg_color = "#1e1e2e",
-        fg_color = "#cba6f7",
+        bg_color = "#16161e",
+        fg_color = "#545c7e",
         italic = true,
       },
       inactive_tab_hover = {
-        bg_color = "#313244",
-        fg_color = "#b4befe",
+        bg_color = "#292e42",
+        fg_color = "#7aa2f7",
         italic = true,
       },
       new_tab = {
-        bg_color = "#1e1e2e",
-        fg_color = "#cba6f7",
+        bg_color = "#16161e",
+        fg_color = "#7aa2f7",
+        intensity = "Bold",
       },
       new_tab_hover = {
-        bg_color = "#313244",
-        fg_color = "#b4befe",
+        bg_color = "#292e42",
+        fg_color = "#7aa2f7",
       },
     },
   }
@@ -65,28 +63,28 @@ function module.apply_to_config(config)
     local time = wezterm.strftime("%a %b %-d %I:%M %p")
 
     window:set_right_status(wezterm.format({
-      { Background = { Color = "rgba(0,0,0,0)" } },
-      { Foreground = { Color = "#1e1e2e" } },
+      { Background = { Color = "rgba(26, 27, 38, 0.5)" } },
+      { Foreground = { Color = "#15161e" } },
       { Text = "" },
-      { Background = { Color = "#1e1e2e" } },
-      { Foreground = { Color = "#cba6f7" } },
+      { Background = { Color = "#15161e" } },
+      { Foreground = { Color = "#7aa2f7" } },
       { Text = " " .. wezterm.nerdfonts.custom_folder_open },
       { Text = " ~" },
       { Text = cwd .. " " },
-      { Foreground = { Color = "#313244" } },
+      { Foreground = { Color = "#414868" } },
       { Text = "" },
-      { Background = { Color = "#313244" } },
-      { Foreground = { Color = "#f2cdcd" } },
+      { Background = { Color = "#414868" } },
+      { Foreground = { Color = "#bb9af7" } },
       { Text = " " .. wezterm.nerdfonts.fa_calendar .. " " .. time .. " " },
     }))
   end)
 
   wezterm.on("toggle-background", function(window, pane)
     local overrides = window:get_config_overrides() or {}
-    if not overrides.background then
-      overrides.background = { nil }
+    if not overrides.window_background_opacity then
+      overrides.window_background_opacity = 1.0
     else
-      overrides.background = nil
+      overrides.window_background_opacity = nil
     end
     window:set_config_overrides(overrides)
   end)
