@@ -13,9 +13,10 @@ function module.apply_to_config(config)
   config.scrollback_lines = 3000
   config.front_end = "OpenGL"
 
+  config.enable_kitty_graphics = true
   config.window_background_opacity = 0.5
   -- Font
-  config.font = wezterm.font("Hack Nerd Font Mono", {weight = 'DemiBold'})
+  config.font = wezterm.font("Hack Nerd Font Mono", { weight = "DemiBold" })
   config.font_size = 13
   config.use_fancy_tab_bar = false
 

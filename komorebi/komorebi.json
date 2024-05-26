@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.25/schema.json",
   "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.yaml",
-  "window_hiding_behaviour": "Cloak",
+  "window_hiding_behaviour": "Hide",
   "window_container_behaviour": "Create",
   "cross_monitor_move_behaviour": "Insert",
   "default_workspace_padding": 2,
@@ -24,10 +24,10 @@
       "background": "#1a1b26"
     }
   },
-  "manage_rules":[
+  "manage_rules": [
     {
       "kind": "Title",
-      "id":"- Discord",
+      "id": "- Discord",
       "matching_strategy": "EndsWith"
     }
   ],
@@ -48,12 +48,25 @@
         },
         {
           "name": "IV",
-          "layout": "BSP"
+          "layout": "BSP",
+          "workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "Spotify.exe"
+            }
+          ]
         },
         {
           "name": "V",
-          "layout": "BSP"
-        },
+          "layout": "BSP",
+          "workspace_rules": [
+            {
+              "kind": "Title",
+              "id": "- Discord",
+              "matching_strategy": "EndsWith"
+            }
+          ]
+        }
       ]
     }
   ]
