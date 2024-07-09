@@ -26,9 +26,8 @@
   },
   "manage_rules": [
     {
-      "kind": "Title",
-      "id": "- Discord",
-      "matching_strategy": "EndsWith"
+      "kind": "Exe",
+      "id": "Discord.exe",
     }
   ],
   "monitors": [
@@ -59,11 +58,11 @@
         {
           "name": "V",
           "layout": "BSP",
+
           "workspace_rules": [
             {
-              "kind": "Title",
-              "id": "- Discord",
-              "matching_strategy": "EndsWith"
+              "kind": "Exe",
+              "id": "Discord.exe"
             }
           ]
         }

@@ -67,7 +67,7 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Move next line to end of current lin
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { silent = true, desc = "Switch to left panel" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { silent = true, desc = "Switch to bottom panel" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { silent = true, desc = "Switch to top panel" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l", { silent = true, desc = "Switch to right panel" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { silent = true, desc = "Switch to right panel" })
 
 -- Paste preserve
 vim.keymap.set("x", "<Leader>p", '"_dP', { desc = "Preserve paste" })
@@ -81,15 +81,8 @@ vim.keymap.set(
 	{ desc = "Replace all words after current line" }
 )
 
--- Fugitive
-vim.keymap.set("n", "<Leader>gs", vim.cmd.Git, { desc = "Open Fugitive (git)" })
-vim.keymap.set("n", "<Leader>gv", vim.cmd.Gvdiffsplit, { desc = "Open git changes in a split" })
-vim.keymap.set("n", "<Leader>gl", function()
-	vim.cmd(":Git log")
-end, { desc = "Open Git log" })
-vim.keymap.set("n", "<Leader>gl%", function()
-	vim.cmd(":Git log %")
-end, { desc = "Open Git log for file currently open" })
+--Neogit
+vim.keymap.set("n", "<Leader>gg", vim.cmd.Neogit, { desc = "Switch to left panel" })
 
 -- None ls
 vim.keymap.set({ "n", "v" }, "<Leader>mp", vim.lsp.buf.format, { desc = "Format" })

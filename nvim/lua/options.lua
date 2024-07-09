@@ -7,6 +7,9 @@ vim.opt.foldmethod = "syntax"
 
 vim.opt.showmode = false
 
+vim.opt.showcmd = false
+vim.opt.cmdheight = 0
+
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 

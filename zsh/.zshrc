@@ -9,6 +9,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -27,7 +28,10 @@ HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
-compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -66,7 +70,7 @@ alias win="cd `cmd.exe /c echo %systemdrive%%homepath% 2> /dev/null | tr -d '\r'
 
 alias ll="ls -la"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 bindkey '^I' autosuggest-accept
 export ZSH_AUTOSUGGEST_STRATEGY=(
     history
@@ -76,9 +80,13 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
 # wezterm shell integration
 . $Home/etc/profile.d/wezterm.sh
 
-export PATH=”$PATH:/home/joyjosr/.local/bin”
+# Bind Ctrl+F to the desired command
+# Bind Ctrl+F (represented as "^F") to call the fzf_open function
+bindkey -s '^F' 'vim $(fzf --preview "bat --style=numbers --color=always {}")\n' 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# fnm
+FNM_PATH="/home/joyjosr/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/joyjosr/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
