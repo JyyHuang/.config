@@ -6,7 +6,8 @@
   "cross_monitor_move_behaviour": "Insert",
   "default_workspace_padding": 2,
   "default_container_padding": 2,
-  "border_width": 2,
+  "focus_follows_mouse": "Windows",
+  "border_width": 1,
   "border_offset": -1,
   "active_window_border": true,
   "active_window_border_colours": {

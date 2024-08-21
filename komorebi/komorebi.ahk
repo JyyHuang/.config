@@ -21,10 +21,10 @@ CapsLock & Right::Move("right")
 CapsLock & Enter::Promote()
 
 ; Resize
-CapsLock & u::ResizeAxis("horizontal", "increase")
-CapsLock & p::ResizeAxis("horizontal", "decrease")
-CapsLock & o::ResizeAxis("vertical", "increase")
-CapsLock & i::ResizeAxis("vertical", "decrease")
+CapsLock & p::ResizeAxis("horizontal", "increase")
+CapsLock & u::ResizeAxis("horizontal", "decrease")
+CapsLock & i::ResizeAxis("vertical", "increase")
+CapsLock & o::ResizeAxis("vertical", "decrease")
 
 ; Manipulate windows
 CapsLock & f::ToggleFloat()

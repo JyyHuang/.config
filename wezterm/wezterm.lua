@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local appearance = require("appearance")
 local keys = require("keys")
-local wallpaper = require("wallpaper")
 local mux = wezterm.mux
 
 local config = {}
